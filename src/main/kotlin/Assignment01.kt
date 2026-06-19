@@ -5,17 +5,16 @@ fun main(args: Array<String>){
 }
 
 fun binarySearch(element: Int, array: Array<Int>): Int {
-    val items = array.mapIndexed { index, i -> Item(i, index) }.sortedBy {it.value } // before: Array.sort()
-    Arrays.sort(array)
+    val items = array.mapIndexed { index, i -> Item(i, index) }.sortedBy {it.value } // before: Arrays.sort(array)
     var index: Int = 0
-    var end = array.size - 1
+    var end = items.size - 1
     while(index <= end){
         val center: Int = (index + end) / 2
-        if (element == array[center]){
+        if (element == items[center].value){
             return items[center].index
-        }else if (element < array[center]){
+        }else if (element < items[center].value){
             end = center - 1
-        }else if(element > array[center]){
+        }else if(element > items[center].value){
             index = center + 1 //before: +2
         }
     }
